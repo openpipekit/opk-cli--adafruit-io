@@ -9,12 +9,12 @@ var clc = require('cli-color')
 // If help flag is set, print help text and exit.
 if (options.hasOwnProperty('help')) {
   console.log('./push')
-  console.log('  --feed [feed id] Example: feed r-pi-temperature')
-  console.log('  --key [x-aio-key] Example: 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49')
+  console.log('  --feed-key [feed key] Example: r-pi-temperature')
+  console.log('  --aio-key [aio key] Example: 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49')
   console.log('  --verbose Use for debug output')
   console.log('')
-  console.log('Usage: echo 42 | ./push --feed r-pi-temperature --key 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49 --verbose')
-  console.log('Usage: echo \'{"value":89}\' | ./push --feed r-pi-temperature --key 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49 --verbose')
+  console.log('Usage: echo 42 | ./push --feed-key r-pi-temperature --aio-key 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49 --verbose')
+  console.log('Usage: echo \'{"value":89}\' | ./push --feed-key r-pi-temperature --aio-key 2d3be35cf8f613afa0d59f2240c00aedf8bdanb49 --verbose')
   console.log('')
   process.exit(0)
 }
@@ -65,11 +65,11 @@ function push(data) {
   var request = require('request')
 
   var requestOptions = {
-    uri: 'https://io.adafruit.com/api/feeds/' + options.feed + '/data.json',
+    uri: 'https://io.adafruit.com/api/feeds/' + options['feed-key'] + '/data.json',
     method: 'POST',
     json: doc,
     headers: {
-      'X-AIO-KEY': options.key 
+      'X-AIO-KEY': options['aio-key'] 
     }
   }
 
