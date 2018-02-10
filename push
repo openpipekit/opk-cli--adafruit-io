@@ -68,6 +68,7 @@ function push(data) {
     uri: 'https://io.adafruit.com/api/feeds/' + options['feed-key'] + '/data.json',
     method: 'POST',
     json: doc,
+    rejectUnauthorized: false,
     headers: {
       'X-AIO-KEY': options['aio-key'] 
     }
